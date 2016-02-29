@@ -64,7 +64,7 @@ namespace Platformer2D
 
             game = XamlGame<PlatformerGame>.Create("", Window.Current.CoreWindow, GamePanel);
            
-            game.updateUI += OnUpdateUi;
+            game.UpdateUI += OnUpdateUi;
             SizeChanged += OnSizeChanged;
             
             game.Start(gameState);
