@@ -1,0 +1,26 @@
+<Page
+    x:Class="Platformer2D.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:gameExample="using:GameExample"
+    mc:Ignorable="d">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <SwapChainBackgroundPanel x:Name="GamePanel">
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel>
+            
+                <TextBlock Name="Timer" Text="TIME: 0:00" Foreground="Yellow" FontSize="30"/>
+
+                <TextBlock Name="Score" Text ="SCORE: 0" Foreground="Yellow" FontSize="30"/>
+
+            </StackPanel>
+        </Grid>
+    </SwapChainBackgroundPanel>
+	
+
+</Page>
