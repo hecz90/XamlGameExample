@@ -16,6 +16,8 @@ namespace Platformer2D
         private readonly SolidColorBrush yellow = new SolidColorBrush(Colors.Yellow);
         private readonly SolidColorBrush red = new SolidColorBrush(Colors.Red);
         private GameState gameState;
+
+        private CoreWindowActivationState lastActivationState = CoreWindowActivationState.CodeActivated;
         #endregion
 
         #region Constructor
@@ -32,8 +34,15 @@ namespace Platformer2D
         #region Events
         private void OnActivated(object sender, WindowActivatedEventArgs e)
         {
+            if (lastActivationState == e.WindowActivationState)
+                return;
+
+            lastActivationState = e.WindowActivationState;
+
             if (gameState != null && e.WindowActivationState == CoreWindowActivationState.Deactivated)
                 XmlLoadManager<GameState>.Save(gameState, "Save.xml");
+
+
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)

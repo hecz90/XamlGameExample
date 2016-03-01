@@ -1,11 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Platformer2D;
 
 namespace GameExample
 {
@@ -32,13 +30,8 @@ namespace GameExample
         }
 
 
-        private static bool saving;
         public static async void Save(T t, string path)
         {
-            if (saving)
-                return;
-
-            saving = true;
             StorageFile file = await ApplicationData.Current.RoamingFolder.CreateFileAsync(path, CreationCollisionOption.ReplaceExisting);
 
             IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite);
@@ -48,8 +41,6 @@ namespace GameExample
                 serializer.Serialize(outStream.AsStreamForWrite(), t);
                 await outStream.FlushAsync();
             }
-
-            saving = false;
         }
     }
 }
